@@ -19,7 +19,7 @@ def get_source_call(a, d, dx):
                 exclassname.append(call_class_name)
             else:
                 pass
-    exclassname = list(set(exclassname))#去重
+    exclassname = list(set(exclassname))
     return exclassname
 
 def select_api(exclassname):
@@ -41,7 +41,7 @@ def select_api(exclassname):
     return  api_classes
 
 def build_methodnameapi_relationship(a, d, dx, api_classes):
-    workbook = xlsxwriter.Workbook("APK2funcallapi.xlsx")
+    workbook = xlsxwriter.Workbook("APK1funcallapi.xlsx")
     worksheet = workbook.add_worksheet()
     exapiname = api_classes
     funcname = []
@@ -65,13 +65,8 @@ def build_methodnameapi_relationship(a, d, dx, api_classes):
         funcallapi = []
     workbook.close()
 
-
-
-
-
-
 if __name__ == "__main__":
-    a, d, dx = AnalyzeAPK("E:/Code/APK2.apk")
+    a, d, dx = AnalyzeAPK("E:/Code/APK1.apk")
     exclassname = get_source_call(a, d, dx)
     apiClass = select_api(exclassname)
     build_methodnameapi_relationship(a, d, dx, apiClass)
